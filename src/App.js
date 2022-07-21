@@ -1,23 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { Canvas,extend } from '@react-three/fiber';
+import { OrbitControls,Effects } from '@react-three/drei';
+import Portfolio from "./Portfolio"
+import {UnrealBloomPass} from "three-stdlib"
+extend({UnrealBloomPass})
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Canvas>
+        <OrbitControls/>
+        <Portfolio />
+        <Effects>
+          <unrealBloomPass threshold={1} strengh={1} radius={0.5} />
+        </Effects>
+      </Canvas>
     </div>
   );
 }
